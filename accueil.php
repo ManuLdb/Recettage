@@ -24,11 +24,11 @@ if (isset($_POST['titre']) && !empty($_POST['titre'])
 
 <?php
 $idauthor = $_SESSION['id_user'];
-$variable= $db->query("SELECT titre, author_id FROM recette WHERE author_id = $idauthor" );
+$variable= $db->query("SELECT id, titre, author_id FROM recette WHERE author_id = $idauthor" );
 while($data =$variable->fetch()){
     ?>
     <br>
-    <p class="title">Realisateur : <span class="texte"> <?php echo $data['titre']; ?> </span>            </p>
+    <a href="recette.php?id=<?php echo $data['id']; ?>"><p> <?php echo $data['titre']; ?> </p></a>
     <?php
 }
 $variable->closeCursor();

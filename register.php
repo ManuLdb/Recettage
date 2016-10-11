@@ -15,7 +15,7 @@ if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])
 
 };
 ?>
-<form action="register.php" method="post">
+<form action="login.php" method="post">
     <input type="text" name="pseudo" placeholder="Pseudo" required/>
     <input type="password" name="password" placeholder="Mot de passe" required/>
     <input type="submit" Value="S'inscrire"/>

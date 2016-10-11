@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce4de726-4c55-451d-84a9-cdf5dc92ea19" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accueil.php" afterPath="$PROJECT_DIR$/accueil.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/register.php" afterPath="$PROJECT_DIR$/register.php" />
     </list>
     <ignored path="Recettage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +28,35 @@
       <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693">
-              <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+            <state vertical-scroll-proportion="-11.115385">
+              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
               <folding>
-                <marker date="1476186633349" expanded="true" signature="205:267" placeholder="SELECT id, p... author" />
+                <marker date="1476187529748" expanded="true" signature="221:283" placeholder="SELECT id, p... author" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../phptruc/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="25.538462">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1465137513932" expanded="true" signature="5130:5192" placeholder="SELECT id, p... author" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../phptruc/upload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="123.57692">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="32" />
+              <folding>
+                <marker date="1465137514035" expanded="true" signature="5971:6043" placeholder="INSERT INTO upload... " />
+                <marker date="1465137514035" expanded="true" signature="6378:6401" placeholder="SELECT path upload" />
               </folding>
             </state>
           </provider>
@@ -40,10 +65,13 @@
       <file leaf-file-name="accueil.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/accueil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07701019">
-              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.4813137">
+              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
               <folding>
-                <marker date="1476187113047" expanded="true" signature="182:247" placeholder="INSERT INTO author... " />
+                <marker date="1476188908845" expanded="true" signature="176:241" placeholder="INSERT INTO author... " />
+                <marker date="1476188908845" expanded="true" signature="660:696" placeholder="SELECT titre... recette" />
+                <marker date="1476188908845" expanded="true" signature="660:715" placeholder="SELECT titre... recette" />
+                <marker date="1476188908845" expanded="true" signature="660:716" placeholder="SELECT titre... recette" />
               </folding>
             </state>
           </provider>
@@ -263,16 +291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-          <folding>
-            <marker date="1476186633349" expanded="true" signature="205:267" placeholder="SELECT id, p... author" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.9615384">
@@ -284,12 +302,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/web-forms2.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="235" column="22" selection-start-line="235" selection-start-column="22" selection-end-line="235" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding>
+            <marker date="1476187529748" expanded="true" signature="221:283" placeholder="SELECT id, p... author" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../phptruc/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="25.538462">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1465137513932" expanded="true" signature="5130:5192" placeholder="SELECT id, p... author" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../phptruc/upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="123.57692">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="32" />
+          <folding>
+            <marker date="1465137514035" expanded="true" signature="5971:6043" placeholder="INSERT INTO upload... " />
+            <marker date="1465137514035" expanded="true" signature="6378:6401" placeholder="SELECT path upload" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/accueil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07701019">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.4813137">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
           <folding>
-            <marker date="1476187113047" expanded="true" signature="182:247" placeholder="INSERT INTO author... " />
+            <marker date="1476188908845" expanded="true" signature="176:241" placeholder="INSERT INTO author... " />
+            <marker date="1476188908845" expanded="true" signature="660:696" placeholder="SELECT titre... recette" />
+            <marker date="1476188908845" expanded="true" signature="660:715" placeholder="SELECT titre... recette" />
+            <marker date="1476188908845" expanded="true" signature="660:716" placeholder="SELECT titre... recette" />
           </folding>
         </state>
       </provider>

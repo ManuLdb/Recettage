@@ -1,6 +1,6 @@
 <?php
 require('config/db.php');
-
+session_start();
 if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])
     && isset($_POST['password']) && !empty($_POST['password'])) {
     session_unset();
@@ -15,12 +15,13 @@ if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])
             session_start();
             $_SESSION['id_user'] = $data['id'];
             $_SESSION['pseudo_user'] = $data['pseudo'];
+            header('Location:accueil.php');
         }
     }
 }
 
 ?>
-<form action="accueil.php" method="post">
+<form action="login.php" method="post">
     <input type="text" name="pseudo" placeholder="Pseudo" required/>
     <input type="password" name="password" placeholder="Mot de passe" required/>
     <input type="submit" Value="Connexion"/>

@@ -248,15 +248,16 @@ if (isset($_POST['process']) && !empty($_POST['process'])
 
     );
 };
-$variable= $db->query("SELECT id, titre FROM process WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, titre, bool FROM process WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
-    <p><?php echo $data['titre'];?></p>
+    <p><?php echo $data['titre'];echo ' '; echo $data['bool'];?></p>
+
     <form action="recette.php?id=<?php echo $id ?>" method="post">
         <p>On</p>
-        <input type="radio" name="bool" value="2" >
+        <input type="radio" name="bool" value="Oui" >
         <p>Off</p>
-        <input type="radio" name="bool" value="3" checked>
+        <input type="radio" name="bool" value="Non" checked>
         <input type="submit" value="Ajouter"/>
     </form>
     <?php

@@ -39,7 +39,7 @@ $name_exploded = explode('.', $_FILES['image']['name']);
 $file_extension = strtolower($name_exploded[sizeof($name_exploded)-1]);
 // On verifie si l'extension du fichier est dans les acceptées
 if (!in_array($file_extension, $accepted_extensions)){
-    $error = "Extention incorrecte";
+
 }
 if ($error ==''){
 
@@ -60,7 +60,7 @@ $req->closeCursor();
 echo ""; //affichage
 }
 else {
-echo "Echec du transfert";
+
 }
 }
 else{
@@ -92,12 +92,10 @@ if (isset($_POST['titre']) && !empty($_POST['titre'])
 
         );
 };
-?>
-<?php
 $variable= $db->query("SELECT id, titre FROM entreprise WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
 ?>
-<br>
+
 <p><?php echo $data['titre'];?></p>
 <?php
 }
@@ -128,12 +126,10 @@ if (isset($_POST['pitch']) && !empty($_POST['pitch'])
 
     );
 };
-?>
-<?php
 $variable= $db->query("SELECT id, titre FROM pitch WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
-    <br>
+
     <p><?php echo $data['titre'];?></p>
     <?php
 }
@@ -161,12 +157,10 @@ if (isset($_POST['brief']) && !empty($_POST['brief'])
 
     );
 };
-?>
-<?php
 $variable= $db->query("SELECT id, titre FROM brief WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
-    <br>
+
     <p><?php echo $data['titre'];?></p>
     <?php
 }
@@ -194,12 +188,10 @@ if (isset($_POST['smart']) && !empty($_POST['smart'])
 
     );
 };
-?>
-<?php
 $variable= $db->query("SELECT id, titre FROM smart WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
-    <br>
+
     <p><?php echo $data['titre'];?></p>
     <?php
 }
@@ -227,12 +219,10 @@ if (isset($_POST['equipe']) && !empty($_POST['equipe'])
 
     );
 };
-?>
-<?php
 $variable= $db->query("SELECT id, titre FROM equipe WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
-    <br>
+
     <p><?php echo $data['titre'];?></p>
     <?php
 }
@@ -258,8 +248,6 @@ if (isset($_POST['process']) && !empty($_POST['process'])
 
     );
 };
-?>
-<?php
 $variable= $db->query("SELECT id, titre FROM process WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
@@ -307,7 +295,7 @@ $name_exploded = explode('.', $_FILES['gant']['name']);
 $file_extension = strtolower($name_exploded[sizeof($name_exploded)-1]);
 // On verifie si l'extension du fichier est dans les acceptées
 if (!in_array($file_extension, $accepted_extensions)){
-    $error = "Extention incorrecte";
+
 }
 if ($error ==''){
 
@@ -328,7 +316,7 @@ if ($error ==''){
         echo ""; //affichage
     }
     else {
-        echo "Echec du transfert gant";
+
     }
 }
 else{
@@ -347,7 +335,7 @@ $donnees = $req->fetch();
     $variable= $db->query("SELECT id, resume, date FROM reunion WHERE recette_id = '$id'" );
     while($data =$variable->fetch()){
     ?>
-    <br>
+
         <p><?php echo $data['date'];?></p>
     <p><?php echo $data['resume'];?></p>
 <?php
@@ -400,12 +388,10 @@ if (isset($_POST['risque']) && !empty($_POST['risque'])
 
     );
 };
-?>
-<?php
 $variable= $db->query("SELECT id, name FROM risque WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
-    <br>
+
     <p><?php echo $data['name'];?></p>
     <?php
 }
@@ -438,7 +424,7 @@ if (isset($_POST['solution']) && !empty($_POST['solution'])
 $variable= $db->query("SELECT id, name FROM solution WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
-    <br>
+
     <p><?php echo $data['name'];?></p>
     <?php
 }
@@ -466,12 +452,10 @@ if (isset($_POST['recettage']) && !empty($_POST['recettage'])
 
     );
 };
-?>
-<?php
 $variable= $db->query("SELECT id, name FROM recettage WHERE recette_id = '$id'" );
 while($data =$variable->fetch()){
     ?>
-    <br>
+
     <p><?php echo $data['name'];?></p>
     <?php
 }

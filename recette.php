@@ -75,7 +75,7 @@ $donnees = $req->fetch();
 <img src="<?php echo $donnees['path']; ?>">
 <!--Ajout nom entreprise-->
 <form action="recette.php?id=<?php echo $id ?>" method="post">
-<input type="titre" name="titre" placeholder="Nom de l'entreprise" />
+<input type="text" name="titre" placeholder="Nom de l'entreprise" />
 <input type="submit" value="Ajouter"/>
 </form>
 <?php
@@ -104,19 +104,24 @@ while($data =$variable->fetch()){
 
 $variable->closeCursor();
 ?>
+
+
+
 <!--Ajout Pitch-->
 <form action="recette.php?id=<?php echo $id ?>" method="post">
-    <input type="titre" name="titre" placeholder="Nom de l'entreprise" />
+     <textarea name="pitch" rows="10" cols="50">
+
+    </textarea>
     <input type="submit" value="Ajouter"/>
 </form>
 <?php
-if (isset($_POST['titre']) && !empty($_POST['titre'])
+if (isset($_POST['pitch']) && !empty($_POST['pitch'])
 ) {
     /* stockage des données*/
     $request = $db->prepare('INSERT INTO pitch(titre, recette_id) VALUES(:titre, :recette_id)');
     $request->execute(
         array(
-            'titre'=>$_POST['titre'],
+            'titre'=>$_POST['pitch'],
             'recette_id'=>$id
 
         )
@@ -137,17 +142,19 @@ $variable->closeCursor();
 ?>
     <!--Ajout brief-->
     <form action="recette.php?id=<?php echo $id ?>" method="post">
-        <input type="titre" name="titre" placeholder="Nom de l'entreprise" />
+         <textarea name="brief" rows="10" cols="50">
+
+    </textarea>
         <input type="submit" value="Ajouter"/>
     </form>
 <?php
-if (isset($_POST['titre']) && !empty($_POST['titre'])
+if (isset($_POST['brief']) && !empty($_POST['brief'])
 ) {
     /* stockage des données*/
     $request = $db->prepare('INSERT INTO brief(titre, recette_id) VALUES(:titre, :recette_id)');
     $request->execute(
         array(
-            'titre'=>$_POST['titre'],
+            'titre'=>$_POST['brief'],
             'recette_id'=>$id
 
         )
@@ -166,4 +173,116 @@ while($data =$variable->fetch()){
 
 $variable->closeCursor();
 ?>
+<!--Ajout Smart-->
+<form action="recette.php?id=<?php echo $id ?>" method="post">
+     <textarea name="smart" rows="10" cols="50">
 
+    </textarea>
+    <input type="submit" value="Ajouter"/>
+</form>
+<?php
+if (isset($_POST['smart']) && !empty($_POST['smart'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO smart(titre, recette_id) VALUES(:titre, :recette_id)');
+    $request->execute(
+        array(
+            'titre'=>$_POST['smart'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+?>
+<?php
+$variable= $db->query("SELECT id, titre FROM smart WHERE recette_id = '$id'" );
+while($data =$variable->fetch()){
+    ?>
+    <br>
+    <p><?php echo $data['titre'];?></p>
+    <?php
+}
+
+$variable->closeCursor();
+?>
+<!--Ajout Equipe-->
+<form action="recette.php?id=<?php echo $id ?>" method="post">
+    <textarea name="equipe" rows="10" cols="50">
+
+    </textarea>
+    <input type="submit" value="Ajouter"/>
+</form>
+<?php
+if (isset($_POST['equipe']) && !empty($_POST['equipe'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO equipe(titre, recette_id) VALUES(:titre, :recette_id)');
+    $request->execute(
+        array(
+            'titre'=>$_POST['equipe'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+?>
+<?php
+$variable= $db->query("SELECT id, titre FROM equipe WHERE recette_id = '$id'" );
+while($data =$variable->fetch()){
+    ?>
+    <br>
+    <p><?php echo $data['titre'];?></p>
+    <?php
+}
+
+$variable->closeCursor();
+?>
+    <!--Ajout process-->
+    <form action="recette.php?id=<?php echo $id ?>" method="post">
+        <input type="text" name="process" placeholder="process" />
+        <input type="submit" value="Ajouter"/>
+    </form>
+<?php
+if (isset($_POST['process']) && !empty($_POST['process'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO process(titre, recette_id) VALUES(:titre, :recette_id)');
+    $request->execute(
+        array(
+            'titre'=>$_POST['process'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+?>
+<?php
+$variable= $db->query("SELECT id, titre FROM process WHERE recette_id = '$id'" );
+while($data =$variable->fetch()){
+    ?>
+    <p><?php echo $data['titre'];?></p>
+    <form action="recette.php?id=<?php echo $id ?>" method="post">
+        <p>On</p>
+        <input type="radio" name="bool" value="2" >
+        <p>Off</p>
+        <input type="radio" name="bool" value="3" checked>
+        <input type="submit" value="Ajouter"/>
+    </form>
+    <?php
+}
+if (isset($_POST['bool']) && !empty($_POST['bool'])
+) {
+    /* stockage des données*/
+    $update = $db->prepare("UPDATE process SET bool=:bool WHERE recette_id = '$id'");
+    $update->execute(
+        array(
+            'bool'=>$_POST['bool']
+
+        )
+    );
+};
+$variable->closeCursor();
+?>

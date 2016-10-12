@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce4de726-4c55-451d-84a9-cdf5dc92ea19" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/recette.php" afterPath="$PROJECT_DIR$/recette.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/register.php" afterPath="$PROJECT_DIR$/register.php" />
     </list>
     <ignored path="Recettage.iws" />
@@ -40,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recette.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="recette.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recette.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72131145">
-              <caret line="278" column="82" selection-start-line="278" selection-start-column="82" selection-end-line="278" selection-end-column="82" />
+            <state vertical-scroll-proportion="-4.7090907">
+              <caret line="258" column="6" selection-start-line="258" selection-start-column="6" selection-end-line="258" selection-end-column="6" />
               <folding>
                 <marker date="1476285974985" expanded="true" signature="148:189" placeholder="SELECT id,ti... recette" />
                 <marker date="1476285974985" expanded="true" signature="1492:1567" placeholder="INSERT INTO image... " />
@@ -86,18 +85,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-32.653847">
-              <caret line="51" column="2" selection-start-line="51" selection-start-column="2" selection-end-line="51" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.596829">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
-                <marker date="1476285872584" expanded="true" signature="186:225" placeholder="SELECT pseud... author" />
-                <marker date="1476285872584" expanded="true" signature="186:226" placeholder="SELECT pseud... author" />
-                <marker date="1476285872584" expanded="true" signature="186:247" placeholder="SELECT pseud... author" />
-                <marker date="1476285872584" expanded="true" signature="186:249" placeholder="SELECT pseud... author" />
-                <marker date="1476285872584" expanded="true" signature="425:488" placeholder="INSERT INTO author... " />
-                <marker date="1476285872584" expanded="true" signature="1278:1332" placeholder="UPDATE proce... " />
+                <marker date="1476286004275" expanded="true" signature="186:225" placeholder="SELECT pseud... author" />
+                <marker date="1476286004275" expanded="true" signature="186:226" placeholder="SELECT pseud... author" />
+                <marker date="1476286004275" expanded="true" signature="186:247" placeholder="SELECT pseud... author" />
+                <marker date="1476286004275" expanded="true" signature="186:249" placeholder="SELECT pseud... author" />
+                <marker date="1476286004275" expanded="true" signature="425:488" placeholder="INSERT INTO author... " />
               </folding>
             </state>
           </provider>
@@ -135,8 +133,8 @@
         <option value="$PROJECT_DIR$/config/db.php" />
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/accueil.php" />
-        <option value="$PROJECT_DIR$/register.php" />
         <option value="$PROJECT_DIR$/recette.php" />
+        <option value="$PROJECT_DIR$/register.php" />
       </list>
     </option>
   </component>
@@ -375,12 +373,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
-            <marker date="1476285872584" expanded="true" signature="186:225" placeholder="SELECT pseud... author" />
-            <marker date="1476285872584" expanded="true" signature="186:226" placeholder="SELECT pseud... author" />
-            <marker date="1476285872584" expanded="true" signature="186:247" placeholder="SELECT pseud... author" />
-            <marker date="1476285872584" expanded="true" signature="186:249" placeholder="SELECT pseud... author" />
-            <marker date="1476285872584" expanded="true" signature="425:488" placeholder="INSERT INTO author... " />
-            <marker date="1476285872584" expanded="true" signature="1278:1332" placeholder="UPDATE proce... " />
+            <marker date="1476286004275" expanded="true" signature="186:225" placeholder="SELECT pseud... author" />
+            <marker date="1476286004275" expanded="true" signature="186:226" placeholder="SELECT pseud... author" />
+            <marker date="1476286004275" expanded="true" signature="186:247" placeholder="SELECT pseud... author" />
+            <marker date="1476286004275" expanded="true" signature="186:249" placeholder="SELECT pseud... author" />
+            <marker date="1476286004275" expanded="true" signature="425:488" placeholder="INSERT INTO author... " />
           </folding>
         </state>
       </provider>
@@ -480,25 +477,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.653847">
-          <caret line="51" column="2" selection-start-line="51" selection-start-column="2" selection-end-line="51" selection-end-column="2" />
-          <folding>
-            <marker date="1476285872584" expanded="true" signature="186:225" placeholder="SELECT pseud... author" />
-            <marker date="1476285872584" expanded="true" signature="186:226" placeholder="SELECT pseud... author" />
-            <marker date="1476285872584" expanded="true" signature="186:247" placeholder="SELECT pseud... author" />
-            <marker date="1476285872584" expanded="true" signature="186:249" placeholder="SELECT pseud... author" />
-            <marker date="1476285872584" expanded="true" signature="425:488" placeholder="INSERT INTO author... " />
-            <marker date="1476285872584" expanded="true" signature="1278:1332" placeholder="UPDATE proce... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/recette.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72131145">
-          <caret line="278" column="82" selection-start-line="278" selection-start-column="82" selection-end-line="278" selection-end-column="82" />
+        <state vertical-scroll-proportion="-4.7090907">
+          <caret line="258" column="6" selection-start-line="258" selection-start-column="6" selection-end-line="258" selection-end-column="6" />
           <folding>
             <marker date="1476285974985" expanded="true" signature="148:189" placeholder="SELECT id,ti... recette" />
             <marker date="1476285974985" expanded="true" signature="1492:1567" placeholder="INSERT INTO image... " />
@@ -523,6 +505,20 @@
             <marker date="1476285974985" expanded="true" signature="6291:6345" placeholder="SELECT id, t... process" />
             <marker date="1476285974985" expanded="true" signature="6831:6866" placeholder="UPDATE proce... " />
             <marker date="1476285974985" expanded="true" signature="6831:6885" placeholder="UPDATE proce... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.596829">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <marker date="1476286004275" expanded="true" signature="186:225" placeholder="SELECT pseud... author" />
+            <marker date="1476286004275" expanded="true" signature="186:226" placeholder="SELECT pseud... author" />
+            <marker date="1476286004275" expanded="true" signature="186:247" placeholder="SELECT pseud... author" />
+            <marker date="1476286004275" expanded="true" signature="186:249" placeholder="SELECT pseud... author" />
+            <marker date="1476286004275" expanded="true" signature="425:488" placeholder="INSERT INTO author... " />
           </folding>
         </state>
       </provider>

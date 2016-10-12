@@ -29,24 +29,3 @@ if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])
 </form>
 
 
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-    <select name="bool">
-        <option value="oui">Oui</option>
-        <option value="non">Non</option>
-    </select>
-</form>
-<?php
-}
-if (isset($_POST['bool']) && !empty($_POST['bool'])
-) {
-    /* stockage des données*/
-    $update = $db->prepare("UPDATE process SET bool=:bool WHERE recette_id=  '$id' ");
-    $update->execute(
-        array(
-            'bool'=>$_POST['bool'],
-        )
-
-    );
-};
-$variable->closeCursor();
-?>

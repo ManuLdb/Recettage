@@ -286,3 +286,195 @@ if (isset($_POST['bool']) && !empty($_POST['bool'])
 };
 $variable->closeCursor();
 ?>
+    <form action="recette.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
+        <input type="name" name="nom" placeholder="Titre" />
+        <input type="file" name="gant" placeholder="image" />
+        <input type="submit" value="Ajouter"/>
+    </form>
+<?php
+$error = "";
+if ($_FILES['gant']['error'] > 0){
+    $error = "Erreur lors du transfert";
+}
+// verification de la taille de l'image
+$maxsize = 10000000;
+if($_FILES['gant']['size'] > $maxsize){
+    $error = "Le fichier est trop gros";
+}
+//verification de l'extension de l'image
+$accepted_extensions = array('jpg', 'jpeg', 'gif', 'png');
+$name_exploded = explode('.', $_FILES['gant']['name']);
+$file_extension = strtolower($name_exploded[sizeof($name_exploded)-1]);
+// On verifie si l'extension du fichier est dans les acceptées
+if (!in_array($file_extension, $accepted_extensions)){
+    $error = "Extention incorrecte";
+}
+if ($error ==''){
+
+
+    $filepath ='gantts/'.time().'.'.$file_extension;
+    $result = move_uploaded_file($_FILES['gant']['tmp_name'], $filepath);
+    if ($result){
+        echo "Merci pour l'image";
+
+
+        $req = $db->prepare('INSERT INTO gantt (chemin, nom, recette_id) VALUES(:chemin, :nom,:recette_id)');
+        $req->execute(array(
+            'chemin' => $filepath,
+            'nom' => $_POST['nom'],
+            'recette_id'=>$id
+        ));
+        $req->closeCursor();
+        echo ""; //affichage
+    }
+    else {
+        echo "Echec du transfert gant";
+    }
+}
+else{
+    echo $error;
+}
+$req = $db->prepare("SELECT chemin FROM gantt WHERE recette_id = '$id'");
+$req->execute(array());
+$donnees = $req->fetch();
+// On affiche l'image
+?>
+<img src="<?php echo $donnees['chemin']; ?>">
+
+
+    <!--Ajout Reunion-->
+<?php
+    $variable= $db->query("SELECT id, resume, date FROM reunion WHERE recette_id = '$id'" );
+    while($data =$variable->fetch()){
+    ?>
+    <br>
+        <p><?php echo $data['date'];?></p>
+    <p><?php echo $data['resume'];?></p>
+<?php
+}
+
+$variable->closeCursor();
+?>
+    <form action="recette.php?id=<?php echo $id ?>" method="post">
+        <input type="date" name="date">
+    <textarea name="resume" rows="10" cols="50">
+
+    </textarea>
+        <input type="submit" value="Ajouter"/>
+    </form>
+<?php
+if (isset($_POST['resume']) && !empty($_POST['resume'])
+    && ($_POST['date']) && !empty($_POST['resume'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO reunion(resume, date, recette_id) VALUES(:titre, :date, :recette_id)');
+    $request->execute(
+        array(
+            'titre'=>$_POST['resume'],
+            'date'=>$_POST['date'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+?>
+<!--Ajout Risque-->
+<form action="recette.php?id=<?php echo $id ?>" method="post">
+     <textarea name="risque" rows="10" cols="50">
+
+    </textarea>
+    <input type="submit" value="Ajouter"/>
+</form>
+<?php
+if (isset($_POST['risque']) && !empty($_POST['risque'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO risque(name, recette_id) VALUES(:name, :recette_id)');
+    $request->execute(
+        array(
+            'name'=>$_POST['risque'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+?>
+<?php
+$variable= $db->query("SELECT id, name FROM risque WHERE recette_id = '$id'" );
+while($data =$variable->fetch()){
+    ?>
+    <br>
+    <p><?php echo $data['name'];?></p>
+    <?php
+}
+
+$variable->closeCursor();
+?>
+<!--Ajout Solution-->
+<form action="recette.php?id=<?php echo $id ?>" method="post">
+     <textarea name="solution" rows="10" cols="50">
+
+    </textarea>
+    <input type="submit" value="Ajouter"/>
+</form>
+<?php
+if (isset($_POST['solution']) && !empty($_POST['solution'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO solution(name, recette_id) VALUES(:name, :recette_id)');
+    $request->execute(
+        array(
+            'name'=>$_POST['solution'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+?>
+<?php
+$variable= $db->query("SELECT id, name FROM solution WHERE recette_id = '$id'" );
+while($data =$variable->fetch()){
+    ?>
+    <br>
+    <p><?php echo $data['name'];?></p>
+    <?php
+}
+
+$variable->closeCursor();
+?>
+    <!--Ajout recettage-->
+    <form action="recette.php?id=<?php echo $id ?>" method="post">
+     <textarea name="recettage" rows="10" cols="50">
+
+    </textarea>
+        <input type="submit" value="Ajouter"/>
+    </form>
+<?php
+if (isset($_POST['recettage']) && !empty($_POST['recettage'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO recettage (name, recette_id) VALUES(:name, :recette_id)');
+    $request->execute(
+        array(
+            'name'=>$_POST['recettage'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+?>
+<?php
+$variable= $db->query("SELECT id, name FROM recettage WHERE recette_id = '$id'" );
+while($data =$variable->fetch()){
+    ?>
+    <br>
+    <p><?php echo $data['name'];?></p>
+    <?php
+}
+
+$variable->closeCursor();
+?>

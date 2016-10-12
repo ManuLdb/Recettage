@@ -27,7 +27,7 @@ $variable= $db->query("SELECT id, titre, author_id FROM recette WHERE author_id 
 while($data =$variable->fetch()){
     ?>
     <br>
-    <a href="pdftemplate/template.php?id=<?php echo $data['id']; ?>"><p> <?php echo $data['titre']; ?> </p></a>
+    <a href="recette.php?id=<?php echo $data['id']; ?>"><p> <?php echo $data['titre']; ?> </p></a>
     <?php
 }
 $variable->closeCursor();

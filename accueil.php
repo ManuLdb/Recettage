@@ -2,7 +2,6 @@
 require('config/db.php');
 require('config/session.php');
 if (isset($_POST['titre']) && !empty($_POST['titre'])
-
 ){ /* stockage des données*/
     $request = $db->prepare('INSERT INTO recette (titre, author_id) VALUES(:titre, :author_id)');
     $request->execute(
@@ -28,7 +27,7 @@ $variable= $db->query("SELECT id, titre, author_id FROM recette WHERE author_id 
 while($data =$variable->fetch()){
     ?>
     <br>
-    <a href="recette.php?id=<?php echo $data['id']; ?>"><p> <?php echo $data['titre']; ?> </p></a>
+    <a href="pdftemplate/template.php?id=<?php echo $data['id']; ?>"><p> <?php echo $data['titre']; ?> </p></a>
     <?php
 }
 $variable->closeCursor();

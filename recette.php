@@ -368,6 +368,37 @@ if (isset($_POST['resume']) && !empty($_POST['resume'])
     );
 };
 ?>
+<!--Ajout motdepasse-->
+<form action="recette.php?id=<?php echo $id ?>" method="post">
+     <textarea name="mdp" rows="10" cols="50">
+
+    </textarea>
+    <input type="submit" value="Ajouter"/>
+</form>
+<?php
+if (isset($_POST['mdp']) && !empty($_POST['mdp'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO mdp (name, recette_id) VALUES(:name, :recette_id)');
+    $request->execute(
+        array(
+            'name'=>$_POST['mdp'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+$variable= $db->query("SELECT id, name FROM mdp WHERE recette_id = '$id'" );
+while($data =$variable->fetch()){
+    ?>
+
+    <p><?php echo $data['name'];?></p>
+    <?php
+}
+
+$variable->closeCursor();
+?>
 <!--Ajout Risque-->
 <form action="recette.php?id=<?php echo $id ?>" method="post">
      <textarea name="risque" rows="10" cols="50">
@@ -432,6 +463,53 @@ while($data =$variable->fetch()){
 
 $variable->closeCursor();
 ?>
+
+<!--Ajout matrice-->
+<form action="recette.php?id=<?php echo $id ?>" method="post">
+    <input type="text" name="matrice" placeholder="matrice" />
+    <input type="submit" value="Ajouter"/>
+</form>
+<?php
+if (isset($_POST['matrice']) && !empty($_POST['matrice'])
+) {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO matrice(titre, recette_id) VALUES(:titre, :recette_id)');
+    $request->execute(
+        array(
+            'titre'=>$_POST['matrice'],
+            'recette_id'=>$id
+
+        )
+
+    );
+};
+$variable= $db->query("SELECT id, titre, bool FROM matrice WHERE recette_id = '$id'" );
+while($data =$variable->fetch()){
+    ?>
+    <p><?php echo $data['titre'];echo ' '; echo $data['bool'];?></p>
+
+    <form action="recette.php?id=<?php echo $id ?>" method="post">
+        <p>On</p>
+        <input type="radio" name="bool" value="Oui" >
+        <p>Off</p>
+        <input type="radio" name="bool" value="Non" checked>
+        <input type="submit" value="Ajouter"/>
+    </form>
+    <?php
+}
+if (isset($_POST['bool']) && !empty($_POST['bool'])
+) {
+    /* stockage des données*/
+    $update = $db->prepare("UPDATE matrice SET bool=:bool WHERE recette_id = '$id'");
+    $update->execute(
+        array(
+            'bool'=>$_POST['bool']
+
+        )
+    );
+};
+$variable->closeCursor();
+?>
     <!--Ajout recettage-->
     <form action="recette.php?id=<?php echo $id ?>" method="post">
      <textarea name="recettage" rows="10" cols="50">
@@ -463,3 +541,4 @@ while($data =$variable->fetch()){
 
 $variable->closeCursor();
 ?>
+

@@ -472,15 +472,24 @@ $variable->closeCursor();
 if (isset($_POST['risque']) && !empty($_POST['risque'])
 ) {
     /* stockage des données*/
-    $request = $db->prepare('INSERT INTO risque(name, recette_id) VALUES(:name, :recette_id)');
+$reponse = $db->query(" SELECT recette_id FROM risque WHERE recette_id= '".$id."' ");
+if ($donnees = $reponse->fetch()) {
+    echo 'erreur donnée deja entrée';
+} else {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO risque (name, recette_id) VALUES(:name, :recette_id)');
     $request->execute(
-        array(
-            'name'=>$_POST['risque'],
-            'recette_id'=>$id
+        $request->execute(
+            array(
+                'name'=>$_POST['risque'],
+                'recette_id'=>$id
+
+            )
 
         )
-
     );
+}
+
 };
 $variable= $db->query("SELECT id, name FROM risque" );
 while($data =$variable->fetch()){
@@ -504,18 +513,25 @@ $variable->closeCursor();
 if (isset($_POST['solution']) && !empty($_POST['solution'])
 ) {
     /* stockage des données*/
-    $request = $db->prepare('INSERT INTO solution(name, recette_id) VALUES(:name, :recette_id)');
+$reponse = $db->query(" SELECT recette_id FROM solution WHERE recette_id= '".$id."' ");
+if ($donnees = $reponse->fetch()) {
+    echo 'erreur donnée deja entrée';
+} else {
+    /* stockage des données*/
+    $request = $db->prepare('INSERT INTO solution (name, recette_id) VALUES(:name, :recette_id)');
     $request->execute(
-        array(
-            'name'=>$_POST['solution'],
-            'recette_id'=>$id
+        $request->execute(
+            array(
+                'name'=>$_POST['solution'],
+                'recette_id'=>$id
+
+            )
 
         )
-
     );
+}
+
 };
-?>
-<?php
 $variable= $db->query("SELECT id, name FROM solution" );
 while($data =$variable->fetch()){
     ?>
@@ -578,7 +594,7 @@ if (isset($_POST['bool']) && !empty($_POST['bool'])
 $variable->closeCursor();
 ?></div>
     <!--Ajout recettage-->
-    <div class="section"  id="page-9">
+    <div class="section"  id="page-9 ancre1">
         <div class="titre">Votre feuille de Recettage :</div>
         <form action="recette.php?id=<?php echo $id ?>" method="post">
             <textarea name="recettage" rows="10" cols="50" placeholder="Décrivez votre recettage ..."></textarea>
@@ -589,16 +605,26 @@ $variable->closeCursor();
 <?php
 if (isset($_POST['recettage']) && !empty($_POST['recettage'])
 ) {
+
+    /* stockage des données*/
+    $reponse = $db->query(" SELECT recette_id FROM recettage WHERE recette_id= '".$id."' ");
+if ($donnees = $reponse->fetch()) {
+    echo 'erreur donnée deja entrée';
+} else {
     /* stockage des données*/
     $request = $db->prepare('INSERT INTO recettage (name, recette_id) VALUES(:name, :recette_id)');
     $request->execute(
-        array(
-            'name'=>$_POST['recettage'],
-            'recette_id'=>$id
+        $request->execute(
+            array(
+                'name'=>$_POST['recettage'],
+                'recette_id'=>$id
+
+            )
 
         )
-
     );
+}
+
 };
 $variable= $db->query("SELECT id, name FROM recettage" );
 while($data =$variable->fetch()){

@@ -389,7 +389,7 @@ if (isset($_POST['mdp']) && !empty($_POST['mdp'])
 
     );
 };
-$variable= $db->query("SELECT id, name FROM mdp WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, name FROM mdp" );
 while($data =$variable->fetch()){
     ?>
 

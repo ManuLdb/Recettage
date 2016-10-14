@@ -540,5 +540,16 @@ while($data =$variable->fetch()){
 }
 
 $variable->closeCursor();
+
+
+$idauthor = $_SESSION['id_user'];
+$variable= $db->query("SELECT id, titre FROM recette" );
+while($data =$variable->fetch()){
+    ?>
+    <br>
+    <a href="pdftemplate/template.php?id=<?php echo $data['id']; ?>"><p> <?php echo $data['titre']; ?> </p></a>
+    <?php
+}
+$variable->closeCursor();
 ?>
 

@@ -10,7 +10,7 @@
     <meta name="Resource-type" content="Document" />
 
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <ul class="menu">
@@ -384,8 +384,13 @@ $donnees = $req->fetch();
     ?>
 
         <p><?php echo $data['date'];?></p>
-    <p><?php echo $data['resume'];?></p>
-<?php
+    <p><?php echo $data['resume'];?></p><a href="suppresion_film.php?id=<?php echo $data['id']; ?>">
+            <img src="img/delete.png" alt="delete" class="delete"></a>
+
+
+
+        <p><span class="glyphicon glyphicon-hand-right"></span> Icônes</p>
+        <?php
 }
 
 $variable->closeCursor();
@@ -446,7 +451,7 @@ while($data =$variable->fetch()){
 
 $variable->closeCursor();
 ?>
-    </div>
+    </p>
 <!--Ajout Risque-->
     <div class="section"  id="page-7">
         <div class="titre">Les risques et solutions possibles du Projet :</div>
@@ -620,7 +625,8 @@ $variable->closeCursor();
         });
     });
 </script>
-
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 

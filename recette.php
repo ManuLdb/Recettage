@@ -386,7 +386,7 @@ $donnees = $req->fetch();
 
     <!--Ajout Reunion-->
 <?php
-    $variable= $db->query("SELECT id, resume, date, recette_id FROM reunion WHERE recette_id = '$id'" );
+    $variable= $db->query("SELECT id, resume, date, recette_id FROM reunion" );
     while($data =$variable->fetch()){
     ?>
 
@@ -425,6 +425,7 @@ if (isset($_POST['resume']) && !empty($_POST['resume'])
 
     );
 };
+
 ?>
 <!--Ajout motdepasse-->
         <form action="recette.php?id=<?php echo $id ?>" method="post">
@@ -437,15 +438,24 @@ if (isset($_POST['resume']) && !empty($_POST['resume'])
 if (isset($_POST['mdp']) && !empty($_POST['mdp'])
 ) {
     /* stockage des données*/
+$reponse = $db->query(" SELECT recette_id FROM mdp WHERE recette_id= '".$id."' ");
+if ($donnees = $reponse->fetch()) {
+    echo 'erreur donnée deja entrée';
+} else {
+    /* stockage des données*/
     $request = $db->prepare('INSERT INTO mdp (name, recette_id) VALUES(:name, :recette_id)');
     $request->execute(
-        array(
-            'name'=>$_POST['mdp'],
-            'recette_id'=>$id
+        $request->execute(
+            array(
+                'name'=>$_POST['mdp'],
+                'recette_id'=>$id
+
+            )
 
         )
-
     );
+}
+
 };
 $variable= $db->query("SELECT id, name FROM mdp" );
 while($data =$variable->fetch()){

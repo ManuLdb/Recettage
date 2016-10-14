@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>fullPage.js One Page Scroll Sites</title>
+    <meta name="author" content="Alvaro Trigo Lopez" />
+    <meta name="description" content="fullPage plugin by Alvaro Trigo. Create fullscreen pages fast and simple. One page scroll like iPhone website." />
+    <meta name="keywords"  content="fullpage,jquery,alvaro,trigo,plugin,fullscren,screen,full,iphone5,apple" />
+    <meta name="Resource-type" content="Document" />
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+</head>
+<body>
+<ul class="menu">
+    <li><a style="font-weight: bold;text-decoration: underline" class="js-scrollTo" href="accueil.php">ACCUEIL</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-1">Logo/Nom Entreprise</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-2">Pitch/Brief</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-3">Objectifs</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-4">L'Equipe</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-5">Process</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-6">Organisation</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-7">Risques/Solutions</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-8">Matrice</a></li>
+    <li><a class="js-scrollTo cool-link" href="#page-9">Feuille Recettage</a></li>
+</ul>
+
+<div id="formulaire">
 <?php
 require("config/db.php");
 $id=$_GET["id"];
@@ -18,11 +47,16 @@ if (isset($_GET['id'])) {
     }
 }
 ?>
-<form action="recette.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
-    <input type="name" name="name" placeholder="Titre" />
-    <input type="file" name="image" placeholder="image" />
-    <input type="submit" value="Ajouter"/>
-</form>
+    <div class="section" id="page-1">
+        <div class="titre">Logo et Nom de votre entreprise :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
+            <input style="width: 410px" class="border-input" type="text" name="name" placeholder="Indiquez le titre de votre logo ..." />
+            <br>
+            <input type="file" name="image" placeholder="image" />
+            <br>
+            <input class="button-add" type="submit" value="Ajouter le logo"/>
+        </form>
+
 <?php
 $error = "";
 if ($_FILES['image']['error'] > 0){
@@ -66,18 +100,20 @@ else {
 else{
 echo $error;
 }
-$req = $db->prepare("SELECT path FROM image WHERE recette_id = '$id'");
+$req = $db->prepare("SELECT path FROM image");
 $req->execute(array());
 $donnees = $req->fetch();
 // On affiche l'image
 ?>
 
-<img src="<?php echo $donnees['path']; ?>">
-<!--Ajout nom entreprise-->
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-<input type="text" name="titre" placeholder="Nom de l'entreprise" />
-<input type="submit" value="Ajouter"/>
-</form>
+        <img src="<?php echo $donnees['path']; ?>">
+        <!--Ajout nom entreprise-->
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+            <input style="width: 490px" class="border-input name-entreprise" type="text" name="titre" placeholder="Indiquez le nom de votre entreprise ..." />
+            <br>
+            <input type="submit" class="button-add" value="Ajouter le nom de l'entreprise"/>
+        </form>
+    </div>
 <?php
 if (isset($_POST['titre']) && !empty($_POST['titre'])
 ) {
@@ -92,7 +128,7 @@ if (isset($_POST['titre']) && !empty($_POST['titre'])
 
         );
 };
-$variable= $db->query("SELECT id, titre FROM entreprise WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, titre FROM entreprise" );
 while($data =$variable->fetch()){
 ?>
 
@@ -106,12 +142,12 @@ $variable->closeCursor();
 
 
 <!--Ajout Pitch-->
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-     <textarea name="pitch" rows="10" cols="50">
-
-    </textarea>
-    <input type="submit" value="Ajouter"/>
-</form>
+    <div class="section color"  id="page-2">
+        <div class="titre">Votre Pitch ou Brief :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+             <textarea name="pitch" rows="10" cols="50" placeholder="Décrivez votre pitch ..."></textarea><br>
+            <input class="button-add" type="submit" value="Ajouter votre pitch"/>
+        </form>
 <?php
 if (isset($_POST['pitch']) && !empty($_POST['pitch'])
 ) {
@@ -126,7 +162,7 @@ if (isset($_POST['pitch']) && !empty($_POST['pitch'])
 
     );
 };
-$variable= $db->query("SELECT id, titre FROM pitch WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, titre FROM pitch" );
 while($data =$variable->fetch()){
     ?>
 
@@ -137,12 +173,11 @@ while($data =$variable->fetch()){
 $variable->closeCursor();
 ?>
     <!--Ajout brief-->
-    <form action="recette.php?id=<?php echo $id ?>" method="post">
-         <textarea name="brief" rows="10" cols="50">
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+             <textarea name="brief" rows="10" cols="50" placeholder="Décrivez votre brief ..."></textarea><br>
+            <input class="button-add" type="submit" value="Ajouter votre brief"/>
+        </form>
 
-    </textarea>
-        <input type="submit" value="Ajouter"/>
-    </form>
 <?php
 if (isset($_POST['brief']) && !empty($_POST['brief'])
 ) {
@@ -157,7 +192,7 @@ if (isset($_POST['brief']) && !empty($_POST['brief'])
 
     );
 };
-$variable= $db->query("SELECT id, titre FROM brief WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, titre FROM brief" );
 while($data =$variable->fetch()){
     ?>
 
@@ -166,14 +201,16 @@ while($data =$variable->fetch()){
 }
 
 $variable->closeCursor();
-?>
+?></div>
 <!--Ajout Smart-->
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-     <textarea name="smart" rows="10" cols="50">
-
-    </textarea>
-    <input type="submit" value="Ajouter"/>
-</form>
+    <div class="section"  id="page-3">
+        <div class="titre">Vos Objectifs SMART :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+             <textarea name="smart" rows="10" cols="50" placeholder="Décrivez vos objectifs smart ..."></textarea>
+            <br>
+            <input class="button-add" type="submit" value="Ajouter vos objectifs smart"/>
+        </form>
+    </div>
 <?php
 if (isset($_POST['smart']) && !empty($_POST['smart'])
 ) {
@@ -188,7 +225,7 @@ if (isset($_POST['smart']) && !empty($_POST['smart'])
 
     );
 };
-$variable= $db->query("SELECT id, titre FROM smart WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, titre FROM smart" );
 while($data =$variable->fetch()){
     ?>
 
@@ -199,12 +236,14 @@ while($data =$variable->fetch()){
 $variable->closeCursor();
 ?>
 <!--Ajout Equipe-->
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-    <textarea name="equipe" rows="10" cols="50">
+    <div class="section color"  id="page-4">
+        <div class="titre">Votre Equipe :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+            <textarea name="equipe" rows="10" cols="50" placeholder="Indiquez votre équipe ..."></textarea>
+            <br>
+            <input class="button-add" type="submit" value="Ajouter votre équipe"/>
+        </form>
 
-    </textarea>
-    <input type="submit" value="Ajouter"/>
-</form>
 <?php
 if (isset($_POST['equipe']) && !empty($_POST['equipe'])
 ) {
@@ -219,7 +258,7 @@ if (isset($_POST['equipe']) && !empty($_POST['equipe'])
 
     );
 };
-$variable= $db->query("SELECT id, titre FROM equipe WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, titre FROM equipe" );
 while($data =$variable->fetch()){
     ?>
 
@@ -229,11 +268,15 @@ while($data =$variable->fetch()){
 
 $variable->closeCursor();
 ?>
+    </div>
     <!--Ajout process-->
-    <form action="recette.php?id=<?php echo $id ?>" method="post">
-        <input type="text" name="process" placeholder="process" />
-        <input type="submit" value="Ajouter"/>
-    </form>
+    <div class="section"  id="page-5">
+        <div class="titre">Votre Process :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+            <input style="width: 330px" class="border-input" type="text" name="process" placeholder="Indiquez votre process ..." />
+            <br>
+            <input class="button-add" type="submit" value="Ajouter votre process"/>
+        </form>
 <?php
 if (isset($_POST['process']) && !empty($_POST['process'])
 ) {
@@ -248,24 +291,22 @@ if (isset($_POST['process']) && !empty($_POST['process'])
 
     );
 };
-$variable= $db->query("SELECT id, titre, bool FROM process WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, titre, bool FROM process" );
 while($data =$variable->fetch()){
     ?>
     <p><?php echo $data['titre'];echo ' '; echo $data['bool'];?></p>
 
-    <form action="recette.php?id=<?php echo $id ?>" method="post">
-        <p>On</p>
-        <input type="radio" name="bool" value="Oui" >
-        <p>Off</p>
-        <input type="radio" name="bool" value="Non" checked>
-        <input type="submit" value="Ajouter"/>
-    </form>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">Validé<input type="radio" name="bool" value="Oui" >Non validé<input type="radio" name="bool" value="Non" checked>
+            <br>
+            <input class="button-add" type="submit" value="Envoyez la validation"/>
+        </form>
+    </div>
     <?php
 }
 if (isset($_POST['bool']) && !empty($_POST['bool'])
 ) {
     /* stockage des données*/
-    $update = $db->prepare("UPDATE process SET bool=:bool WHERE recette_id = '$id'");
+    $update = $db->prepare("UPDATE process SET bool=:bool");
     $update->execute(
         array(
             'bool'=>$_POST['bool']
@@ -275,11 +316,15 @@ if (isset($_POST['bool']) && !empty($_POST['bool'])
 };
 $variable->closeCursor();
 ?>
-    <form action="recette.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
-        <input type="name" name="nom" placeholder="Titre" />
-        <input type="file" name="gant" placeholder="image" />
-        <input type="submit" value="Ajouter"/>
-    </form>
+    <div class="section color"  id="page-6">
+        <div class="titre">Vos Organisation du Projet :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
+            <input style="width: 470px" class="border-input" type="text" name="nom" placeholder="Indiquez le titre de votre planning ..." />
+            <br>
+            <input type="file" name="gant" placeholder="image" />
+            <br>
+            <input class="button-add" type="submit" value="Ajouter votre planning Gannt"/>
+        </form>
 <?php
 $error = "";
 if ($_FILES['gant']['error'] > 0){
@@ -323,7 +368,7 @@ if ($error ==''){
 else{
     echo $error;
 }
-$req = $db->prepare("SELECT chemin FROM gantt WHERE recette_id = '$id'");
+$req = $db->prepare("SELECT chemin FROM gantt");
 $req->execute(array());
 $donnees = $req->fetch();
 // On affiche l'image
@@ -344,13 +389,14 @@ $donnees = $req->fetch();
 
 $variable->closeCursor();
 ?>
-    <form action="recette.php?id=<?php echo $id ?>" method="post">
-        <input type="date" name="date">
-    <textarea name="resume" rows="10" cols="50">
-
-    </textarea>
-        <input type="submit" value="Ajouter"/>
-    </form>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+            <input style="width: 260px" class="border-input input-date" type="date" name="date">
+            <br>
+            <br>
+            <textarea name="resume" rows="10" cols="50" placeholder="Décrivez l'objet de la réunion ..."></textarea>
+            <br>
+            <input class="button-add" type="submit" value="Ajouter la réunion"/>
+        </form>
 <?php
 if (isset($_POST['resume']) && !empty($_POST['resume'])
     && ($_POST['date']) && !empty($_POST['resume'])
@@ -369,12 +415,12 @@ if (isset($_POST['resume']) && !empty($_POST['resume'])
 };
 ?>
 <!--Ajout motdepasse-->
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-     <textarea name="mdp" rows="10" cols="50">
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+             <textarea name="mdp" placeholder="Indiquez les mots de passe ..."></textarea>
+            <br>
+            <input class="button-add" type="submit" value="Ajouter les mots de passe"/>
+        </form>
 
-    </textarea>
-    <input type="submit" value="Ajouter"/>
-</form>
 <?php
 if (isset($_POST['mdp']) && !empty($_POST['mdp'])
 ) {
@@ -399,13 +445,16 @@ while($data =$variable->fetch()){
 
 $variable->closeCursor();
 ?>
+    </div>
 <!--Ajout Risque-->
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-     <textarea name="risque" rows="10" cols="50">
+    <div class="section"  id="page-7">
+        <div class="titre">Les risques et solutions possibles du Projet :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+             <textarea  name="risque" rows="10" cols="50" placeholder="Décrivez les risques ..."></textarea>
+            <br>
+            <input class="button-add" type="submit" value="Ajouter les risques"/>
+        </form>
 
-    </textarea>
-    <input type="submit" value="Ajouter"/>
-</form>
 <?php
 if (isset($_POST['risque']) && !empty($_POST['risque'])
 ) {
@@ -420,7 +469,7 @@ if (isset($_POST['risque']) && !empty($_POST['risque'])
 
     );
 };
-$variable= $db->query("SELECT id, name FROM risque WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, name FROM risque" );
 while($data =$variable->fetch()){
     ?>
 
@@ -431,12 +480,12 @@ while($data =$variable->fetch()){
 $variable->closeCursor();
 ?>
 <!--Ajout Solution-->
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-     <textarea name="solution" rows="10" cols="50">
-
-    </textarea>
-    <input type="submit" value="Ajouter"/>
-</form>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+             <textarea name="solution" rows="10" cols="50" placeholder="Décrivez vos solutions ..."></textarea>
+            <br>
+            <input class="button-add" type="submit" value="Ajouter les solutions"/>
+        </form>
+    </div>
 <?php
 if (isset($_POST['solution']) && !empty($_POST['solution'])
 ) {
@@ -453,7 +502,7 @@ if (isset($_POST['solution']) && !empty($_POST['solution'])
 };
 ?>
 <?php
-$variable= $db->query("SELECT id, name FROM solution WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, name FROM solution" );
 while($data =$variable->fetch()){
     ?>
 
@@ -465,10 +514,13 @@ $variable->closeCursor();
 ?>
 
 <!--Ajout matrice-->
-<form action="recette.php?id=<?php echo $id ?>" method="post">
-    <input type="text" name="matrice" placeholder="matrice" />
-    <input type="submit" value="Ajouter"/>
-</form>
+    <div class="section color"  id="page-8">
+        <div class="titre">La Matrice :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+            <input style="width: 320px" class="border-input" type="text" name="matrice" placeholder="Indiquez votre matrice ..." />
+            <br>
+            <input class="button-add" type="submit" value="Ajouter"/>
+        </form>
 <?php
 if (isset($_POST['matrice']) && !empty($_POST['matrice'])
 ) {
@@ -483,24 +535,23 @@ if (isset($_POST['matrice']) && !empty($_POST['matrice'])
 
     );
 };
-$variable= $db->query("SELECT id, titre, bool FROM matrice WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, titre, bool FROM matrice" );
 while($data =$variable->fetch()){
     ?>
     <p><?php echo $data['titre'];echo ' '; echo $data['bool'];?></p>
 
-    <form action="recette.php?id=<?php echo $id ?>" method="post">
-        <p>On</p>
-        <input type="radio" name="bool" value="Oui" >
-        <p>Off</p>
-        <input type="radio" name="bool" value="Non" checked>
-        <input type="submit" value="Ajouter"/>
-    </form>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+            <p>Validé<input type="radio" name="bool" value="Oui" >Non validé
+            <input type="radio" name="bool" value="Non" checked>
+            <br>
+            <input class="button-add" type="submit" value="Ajouter"/>
+        </form>
     <?php
 }
 if (isset($_POST['bool']) && !empty($_POST['bool'])
 ) {
     /* stockage des données*/
-    $update = $db->prepare("UPDATE matrice SET bool=:bool WHERE recette_id = '$id'");
+    $update = $db->prepare("UPDATE matrice SET bool=:bool");
     $update->execute(
         array(
             'bool'=>$_POST['bool']
@@ -509,14 +560,16 @@ if (isset($_POST['bool']) && !empty($_POST['bool'])
     );
 };
 $variable->closeCursor();
-?>
+?></div>
     <!--Ajout recettage-->
-    <form action="recette.php?id=<?php echo $id ?>" method="post">
-     <textarea name="recettage" rows="10" cols="50">
-
-    </textarea>
-        <input type="submit" value="Ajouter"/>
-    </form>
+    <div class="section"  id="page-9">
+        <div class="titre">Votre feuille de Recettage :</div>
+        <form action="recette.php?id=<?php echo $id ?>" method="post">
+            <textarea name="recettage" rows="10" cols="50" placeholder="Décrivez votre recettage ..."></textarea>
+            <br>
+            <input class="button-add" type="submit" value="Ajouter"/>
+        </form>
+    </div>
 <?php
 if (isset($_POST['recettage']) && !empty($_POST['recettage'])
 ) {
@@ -531,7 +584,7 @@ if (isset($_POST['recettage']) && !empty($_POST['recettage'])
 
     );
 };
-$variable= $db->query("SELECT id, name FROM recettage WHERE recette_id = '$id'" );
+$variable= $db->query("SELECT id, name FROM recettage" );
 while($data =$variable->fetch()){
     ?>
 
@@ -552,4 +605,21 @@ while($data =$variable->fetch()){
 }
 $variable->closeCursor();
 ?>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-scrollTo').on('click', function() { // Au clic sur un élément
+            var page = $(this).attr('href'); // Page cible
+            var speed = 750; // Durée de l'animation (en ms)
+            $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+            return false;
+        });
+    });
+</script>
+
+</body>
+</html>
 

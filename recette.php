@@ -288,6 +288,7 @@ $variable->closeCursor();
 if (isset($_POST['process']) && !empty($_POST['process'])
 ) {
     /* stockage des données*/
+
     $request = $db->prepare('INSERT INTO process(titre, recette_id) VALUES(:titre, :recette_id)');
     $request->execute(
         array(
@@ -414,6 +415,7 @@ if (isset($_POST['resume']) && !empty($_POST['resume'])
     && ($_POST['date']) && !empty($_POST['resume'])
 ) {
     /* stockage des données*/
+
     $request = $db->prepare('INSERT INTO reunion(resume, date, recette_id) VALUES(:titre, :date, :recette_id)');
     $request->execute(
         array(
@@ -649,7 +651,7 @@ $variable->closeCursor();
 
 
 $idauthor = $_SESSION['id_user'];
-$variable= $db->query("SELECT id, titre FROM recette" );
+$variable= $db->query("SELECT id, titre FROM recette WHERE id= '".$id."' " );
 while($data =$variable->fetch()){
     ?>
     <br>

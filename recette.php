@@ -264,6 +264,7 @@ while($data =$variable->fetch()){
     ?>
 
     <p><?php echo $data['titre'];?></p>
+    <a href="suppressionequipe.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
     <?php
 }
 
@@ -296,7 +297,7 @@ $variable= $db->query("SELECT id, titre, bool FROM process" );
 while($data =$variable->fetch()){
     ?>
     <p><?php echo $data['titre'];echo ' '; echo $data['bool'];?></p>
-
+        <a href="suppressionprocess.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
         <form action="recette.php?id=<?php echo $id ?>" method="post">Validé<input type="radio" name="bool" value="Oui" >Non validé<input type="radio" name="bool" value="Non" checked>
             <br>
             <input class="button-add" type="submit" value="Envoyez la validation"/>
@@ -375,6 +376,7 @@ $donnees = $req->fetch();
 // On affiche l'image
 ?>
 <img src="<?php echo $donnees['chemin']; ?>">
+        <a href="suppressiongant.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
 
 
     <!--Ajout Reunion-->

@@ -514,6 +514,7 @@ while($data =$variable->fetch()){
     ?>
 
     <p><?php echo $data['name'];?></p>
+    <a href="suppressionsolution.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
     <?php
 }
 
@@ -546,13 +547,14 @@ $variable= $db->query("SELECT id, titre, bool FROM matrice" );
 while($data =$variable->fetch()){
     ?>
     <p><?php echo $data['titre'];echo ' '; echo $data['bool'];?></p>
-
+    <a href="suppressionmatrice.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
         <form action="recette.php?id=<?php echo $id ?>" method="post">
             <p>Validé<input type="radio" name="bool" value="Oui" >Non validé
             <input type="radio" name="bool" value="Non" checked>
             <br>
             <input class="button-add" type="submit" value="Ajouter"/>
         </form>
+
     <?php
 }
 if (isset($_POST['bool']) && !empty($_POST['bool'])
@@ -596,6 +598,7 @@ while($data =$variable->fetch()){
     ?>
 
     <p><?php echo $data['name'];?></p>
+    <a href="suppressionrecettage.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
     <?php
 }
 

@@ -108,6 +108,7 @@ $donnees = $req->fetch();
 ?>
 
         <img src="<?php echo $donnees['path']; ?>">
+        <a href="suppressionimage.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
         <!--Ajout nom entreprise-->
         <form action="recette.php?id=<?php echo $id ?>" method="post">
             <input style="width: 490px" class="border-input name-entreprise" type="text" name="titre" placeholder="Indiquez le nom de votre entreprise ..." />
@@ -134,6 +135,7 @@ while($data =$variable->fetch()){
 ?>
 
 <p><?php echo $data['titre'];?></p>
+    <a href="suppressionentreprise.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
 <?php
 }
 
@@ -167,7 +169,8 @@ $variable= $db->query("SELECT id, titre FROM pitch" );
 while($data =$variable->fetch()){
     ?>
 
-    <p><?php echo $data['titre'];?></p>
+    <p><?php echo $data['titre'];?>
+        <a href="suppressionpitch.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
     <?php
 }
 
@@ -198,6 +201,7 @@ while($data =$variable->fetch()){
     ?>
 
     <p><?php echo $data['titre'];?></p>
+    <a href="suppressionbrief.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
     <?php
 }
 
@@ -231,6 +235,7 @@ while($data =$variable->fetch()){
     ?>
 
     <p><?php echo $data['titre'];?></p>
+    <a href="suppressionsmart.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
     <?php
 }
 

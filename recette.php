@@ -29,6 +29,7 @@
 <div id="formulaire">
 <?php
 require("config/db.php");
+session_start();
 $id=$_GET["id"];
 if (isset($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);

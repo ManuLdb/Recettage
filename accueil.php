@@ -16,7 +16,7 @@
 
 <?php
 require('config/db.php');
-require('config/session.php');
+session_start();
 if (isset($_POST['titre']) && !empty($_POST['titre'])
 ){ /* stockage des données*/
     $request = $db->prepare('INSERT INTO recette (titre, author_id) VALUES(:titre, :author_id)');

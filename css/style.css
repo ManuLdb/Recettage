@@ -171,3 +171,6 @@ textarea {
     background-color: white;
     color: #dddddd;
 }
+.delete{
+    max-height: 2em;
+}

@@ -379,17 +379,16 @@ $donnees = $req->fetch();
 
     <!--Ajout Reunion-->
 <?php
-    $variable= $db->query("SELECT id, resume, date FROM reunion WHERE recette_id = '$id'" );
+    $variable= $db->query("SELECT id, resume, date, recette_id FROM reunion WHERE recette_id = '$id'" );
     while($data =$variable->fetch()){
     ?>
 
         <p><?php echo $data['date'];?></p>
-    <p><?php echo $data['resume'];?></p><a href="suppresion_film.php?id=<?php echo $data['id']; ?>">
-            <img src="img/delete.png" alt="delete" class="delete"></a>
+    <p><?php echo $data['resume'];?></p>
+        <a href="suppressionreu.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
 
 
 
-        <p><span class="glyphicon glyphicon-hand-right"></span> Icônes</p>
         <?php
 }
 
@@ -446,6 +445,7 @@ while($data =$variable->fetch()){
     ?>
 
     <p><?php echo $data['name'];?></p>
+    <a href="suppressionmdp.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
     <?php
 }
 
@@ -480,6 +480,7 @@ while($data =$variable->fetch()){
     ?>
 
     <p><?php echo $data['name'];?></p>
+    <a href="suppressionrisque.php?id=<?php echo $data['id']; ?>"><img src="img/delete.png" alt="delete" class="delete"></a>
     <?php
 }
 
